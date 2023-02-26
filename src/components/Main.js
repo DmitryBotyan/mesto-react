@@ -1,5 +1,5 @@
 import React from "react";
-import { api } from "../utils/Api.js";
+import { api } from "../utils/api.js";
 import Card from "./Card";
 
 export default function Main({
@@ -73,9 +73,9 @@ export default function Main({
         {cardList.cards.map((card) => (
           <Card
             card={card}
-            key={card._id}
             onDelete={onDelete}
             onImageClick={onImageClick}
+            key={card._id}
           />
         ))}
       </section>

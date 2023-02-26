@@ -1,12 +1,12 @@
 import iconDelete from "../images/Group.svg";
 
-export default function Card({ card, key, onDelete, onImageClick }) {
+export default function Card({ card, onDelete, onImageClick }) {
   const handleClick = () => {
     onImageClick(card);
   };
 
   return (
-    <div className="elements__element" key={key}>
+    <div className="elements__element">
       <img
         src={iconDelete}
         alt="Корзина"

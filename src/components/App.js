@@ -19,6 +19,7 @@ export function App() {
   };
 
   const closeAllPopus = () => {
+    setSelectedCard([])
     setEditPopupOpen(false);
     setAddPlacePopupOpen(false);
     setEditAvatarPopupOpen(false);
@@ -27,7 +28,7 @@ export function App() {
   };
 
   return (
-    <body className="page">
+    <div className="page">
       <Header />
 
       <Main
@@ -141,7 +142,7 @@ export function App() {
       />
 
       <Footer />
-    </body>
+    </div>
   );
 }
 
