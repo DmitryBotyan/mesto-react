@@ -19,7 +19,7 @@ export default class PopupWithForm extends React.Component {
           name={this.props.name}
           noValidate
         >
-          <h2 className="popup__tilte">{this.props.title}</h2>
+          <h2 className={`popup__title popup__title-${this.props.name}`}>{this.props.title}</h2>
 
           {this.children}
 

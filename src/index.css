@@ -43,8 +43,9 @@
 @import url(./blocks/popup/__error-text/_visible/popup__error-text_visible.css);
 @import url(./blocks/popup/__error-text/_job/popup__error-text_job.css);
 @import url(./blocks/popup/__container/popup__container.css);
-@import url(./blocks/popup/__title/popup__tilte.css);
-@import url(./blocks/popup/__title-place/popup__title-place.css);
+@import url(./blocks/popup/__title/popup__title.css);
+@import url(./blocks/popup/__title-add/popup__title-add.css);
+@import url(./blocks/popup/__title-edit-photo/popup__title-edit-photo.css);
 @import url(./blocks/popup/_confirm/popup_confirm.css);
 @import url(./blocks/popup/__job/popup__job.css);
 @import url(./blocks/popup/__name/popup__name.css);
