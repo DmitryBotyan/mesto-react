@@ -11,7 +11,7 @@ export function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
   const [isConfirmPopupOpen, setConfirmPopupOpen] = React.useState(false);
   const [isZoomImagePopupOpen, setZoomImagePopupOpen] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState([]);
+  const [selectedCard, setSelectedCard] = React.useState({});
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
@@ -19,7 +19,7 @@ export function App() {
   };
 
   const closeAllPopus = () => {
-    setSelectedCard([])
+    setSelectedCard({})
     setEditPopupOpen(false);
     setAddPlacePopupOpen(false);
     setEditAvatarPopupOpen(false);
