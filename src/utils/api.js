@@ -45,24 +45,18 @@ class Api {
       return this._getResponseData(res);
     });
   }
-  letLike(cardId) {
+  changeLikeCardStatusletLike(cardId, isLiked) {
     return fetch(
       `https://mesto.nomoreparties.co/v1/${this._id}/cards/${cardId}/likes`,
-      {
-        headers: this._headers,
-        method: "PUT",
-      }
-    ).then((res) => {
-      return this._getResponseData(res);
-    });
-  }
-  deleteLike(cardId) {
-    return fetch(
-      `https://mesto.nomoreparties.co/v1/${this._id}/cards/${cardId}/likes`,
-      {
-        headers: this._headers,
-        method: "DELETE",
-      }
+      !isLiked
+        ? {
+            headers: this._headers,
+            method: "PUT",
+          }
+        : {
+            headers: this._headers,
+            method: "DELETE",
+          }
     ).then((res) => {
       return this._getResponseData(res);
     });
