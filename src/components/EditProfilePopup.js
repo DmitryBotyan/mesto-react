@@ -3,17 +3,17 @@ import PopupWithForm from "./PopupWithForm.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
 export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
-  
-  const [name, setName] = React.useState('');
-  const [description, setDescription] = React.useState('')
-
   const userContext = React.useContext(CurrentUserContext);
 
+  const [name, setName] = React.useState("");
+  const [description, setDescription] = React.useState("");
+
   React.useEffect(() => {
+    if (!userContext) return;
     setName(userContext.userName);
     setDescription(userContext.userDescription)
-  }, [userContext]); 
-
+  }, [userContext]);
+ 
   function handleChangeName(e) {
     setName(e.target.value);
   }
@@ -29,8 +29,8 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       name: name,
       about: description,
     });
-  }
-  
+  };
+
   return (
     <PopupWithForm
       name="edit"
@@ -38,6 +38,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      buttonText="Сохранить"
     >
       <input
         type="text"
@@ -49,6 +50,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
         id="name"
         name="name"
         onChange={handleChangeName}
+        value={name || ""}
       />
       <span
         className="popup__error-text_name popup__error-text"
@@ -65,6 +67,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
         id="job"
         name="about"
         onChange={handleChangeDescription}
+        value={description || ""}
       />
       <span
         className="popup__error-text_job popup__error-text"

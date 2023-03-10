@@ -10,6 +10,11 @@ export function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
         avatar: avatarRef.current.value
     })
   }
+
+  React.useEffect(() => {
+    avatarRef.current.value = ""
+  }, [isOpen])
+
   return (
     <PopupWithForm
       name="edit-photo"
@@ -17,6 +22,7 @@ export function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      buttonText='Сохранить'
     >
       <input
         type="text"

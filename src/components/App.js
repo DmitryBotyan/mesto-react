@@ -2,7 +2,6 @@ import Header from "../components/Header.js";
 import Main from "./Main.js";
 import Footer from "./Footer.js";
 import React from "react";
-import PopupWithForm from "./PopupWithForm.js";
 import ImagePopup from "./ImagePopup.js";
 import { api } from "../utils/api.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
@@ -14,7 +13,6 @@ export function App() {
   const [isEditPopupOpen, setEditPopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
-  const [isConfirmPopupOpen, setConfirmPopupOpen] = React.useState(false);
   const [isZoomImagePopupOpen, setZoomImagePopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({});
 
@@ -67,11 +65,11 @@ export function App() {
   };
 
   const handleCardDelete = (card) => {
-    setConfirmPopupOpen(true);
-
     api
       .deleteCard(card._id)
-      .then((res) => {})
+      .then(() => {
+        setCards(cards.filter(item => item !== card))
+      })
       .catch((err) => console.log(err));
   };
 
@@ -80,7 +78,6 @@ export function App() {
     setEditPopupOpen(false);
     setAddPlacePopupOpen(false);
     setEditAvatarPopupOpen(false);
-    setConfirmPopupOpen(false);
     setZoomImagePopupOpen(false);
   };
 
@@ -158,13 +155,6 @@ export function App() {
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopus}
           onUpdateAvatar={handleUpdateAvatar}
-        />
-
-        <PopupWithForm
-          name="confirm"
-          title="Вы уверены?"
-          isOpen={isConfirmPopupOpen}
-          onClose={closeAllPopus}
         />
 
         <Footer />
