@@ -1,39 +1,35 @@
 import React from "react";
 
-export default class PopupWithForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.props = props;
-    this.children = props.children;
-  }
-
-  render() {
-    return (
-      <div
-        className={`popup popup_${this.props.name} ${
-          this.props.isOpen ? "popup_opened" : ""
-        }`}
+export default function PopupWithForm({
+  isOpen,
+  onClose,
+  onSubmit,
+  buttonText,
+  name,
+  title,
+  children,
+}) {
+  return (
+    <div className={`popup popup_${name} ${isOpen ? "popup_opened" : ""}`}>
+      <form
+        className={`popup__container popup__container-${name}`}
+        name={name}
+        onSubmit={onSubmit}
       >
-        <form
-          className={`popup__container popup__container-${this.props.name}`}
-          name={this.props.name}
-          onSubmit={this.props.onSubmit}
-        >
-          <h2 className={`popup__title popup__title-${this.props.name}`}>{this.props.title}</h2>
+        <h2 className={`popup__title popup__title-${name}`}>{title}</h2>
 
-          {this.children}
+        {children}
 
-          <button type="submit" className="popup__button button">
-            {this.props.buttonText}
-          </button>
+        <button type="submit" className="popup__button button">
+          {buttonText}
+        </button>
 
-          <button
-            className="popup__close-button button"
-            type="button"
-            onClick={this.props.onClose}
-          ></button>
-        </form>
-      </div>
-    );
-  }
+        <button
+          className="popup__close-button button"
+          type="button"
+          onClick={onClose}
+        ></button>
+      </form>
+    </div>
+  );
 }
