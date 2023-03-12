@@ -12,7 +12,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
     if (!userContext) return;
     setName(userContext.userName);
     setDescription(userContext.userDescription)
-  }, [userContext]);
+  }, [userContext, isOpen]);
  
   function handleChangeName(e) {
     setName(e.target.value);
